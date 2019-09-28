@@ -1,18 +1,26 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <h1>Consume API GitHub</h1>
-    <strong>Lucas Maciel</strong>
-  </div>
+  <v-app f>
+    <Header/>
+    <v-content >
+      <NavigationPath />
+    </v-content>
+    <Footer/>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<script>
+import Header from './components/Header';
+import Footer from './components/Footer';
+import NavigationPath from './components/NavigationPath';
+export default {
+  name: 'App',
+  components: {
+    Header,
+    Footer,
+    NavigationPath,
+  },
+  data: () => ({
+    //
+  }),
+};
+</script>
