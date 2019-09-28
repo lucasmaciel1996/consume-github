@@ -1,16 +1,19 @@
 <template>
     <v-app-bar app fluid>
         <v-toolbar-title class="headline text-uppercase">
-            <span>Vuetify</span>
+            <span>Consumes </span>
             <span class="font-weight-light">APi GitHub</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="https://developer.github.com/v3/users/"
         target="_blank"
+        color="brack"
+        outlined
+        rounded
+        depressed
         >
-            <span class="mr-2">Latest Release</span>
+           <v-icon left>mdi-github-circle</v-icon>Doc's GitHub
         </v-btn>
     </v-app-bar>
 </template>

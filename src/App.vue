@@ -3,6 +3,7 @@
     <Header/>
     <v-content >
       <NavigationPath />
+      <router-view></router-view>
     </v-content>
     <Footer/>
   </v-app>
