@@ -8,11 +8,7 @@
     </v-btn>
 
     <v-btn value="user" to="/user">
-      <span>User</span>
-      <v-icon>mdi-account-search</v-icon>
-    </v-btn>
-    <v-btn value="userdetails" to="/userdetails">
-      <span>User Details</span>
+      <span>User GitHub</span>
       <v-icon>mdi-account-search</v-icon>
     </v-btn>
     <v-btn value="projects" to="/projects">

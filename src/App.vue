@@ -1,9 +1,9 @@
 <template>
-  <v-app fluid>
+  <v-app app>
     <Header/>
     <v-content >
-      <NavigationPath />
-      <router-view></router-view>
+        <NavigationPath />
+        <router-view></router-view>
     </v-content>
     <Footer/>
   </v-app>

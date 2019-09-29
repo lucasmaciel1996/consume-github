@@ -6,7 +6,7 @@ import UserDetails from './components/UserDetails';
 const routes = [
     {path:'/',component:Home},
     {path:'/user',component:User},
-    {path:'/userdetails',component:UserDetails},    
+    {path:'/userdetails/:username',component:UserDetails},    
     {path:'/projects',component:Projects},
 ];
 

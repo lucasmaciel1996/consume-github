@@ -1,99 +1,99 @@
 <template>
-  <v-card
-    max-width="375"
+  <v-card 
     class="mx-auto"
   >
-    <v-img
-      :src="user.avatar_url"
-      height="300px"
-      dark
-    >
-      <v-row class="fill-height">
-        <v-card-title>
-          <v-btn dark icon>
-            <v-icon>mdi-chevron-left</v-icon>
-          </v-btn>
+    <v-card-title class="black--text text-center">
+      
+     <v-container fluid>
+      <v-img
+        :src="user.avatar_url"
+        contain
+        max-height="600"
+      ></v-img>
+     </v-container>
+      <div class="display-2">{{user.name}}</div>
+    </v-card-title>
+    <v-divider inset></v-divider>
+    
+      <v-list-item>
+        <v-list-item-action>
+          <v-icon color="black">mdi-information-outline</v-icon> 
+        </v-list-item-action>
 
-          <div class="flex-grow-1"></div>
-
-          <v-btn dark icon class="mr-4">
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
-
-          <v-btn dark icon>
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </v-card-title>
-
-        <div class="flex-grow-1"></div>
-
-        <v-card-title class="white--text pl-12 pt-12">
-          <div class="display-1 pl-12 pt-12">{{user.name}}</div>
-        </v-card-title>
-      </v-row>
-    </v-img>
-
+        <v-list-item-content>
+          <v-list-item-title>{{user.bio}}</v-list-item-title>
+          <v-list-item-subtitle>Bio</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
     <v-list two-line>
-      <v-list-item @click="">
+      <v-list-item  
+        :href="`${user.blog}`"
+        target="_blank">
         <v-list-item-icon>
-          <v-icon color="indigo">mdi-phone</v-icon>
+          <v-icon color="black">mdi-account-tie</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>(650) 555-1234</v-list-item-title>
-          <v-list-item-subtitle>Mobile</v-list-item-subtitle>
+          <v-list-item-title>{{user.blog}}</v-list-item-title>
+          <v-list-item-subtitle>Blog</v-list-item-subtitle>
         </v-list-item-content>
 
         <v-list-item-icon>
-          <v-icon>mdi-message-text</v-icon>
-        </v-list-item-icon>
-      </v-list-item>
-
-      <v-list-item @click="">
-        <v-list-item-action></v-list-item-action>
-
-        <v-list-item-content>
-          <v-list-item-title>(323) 555-6789</v-list-item-title>
-          <v-list-item-subtitle>Work</v-list-item-subtitle>
-        </v-list-item-content>
-
-        <v-list-item-icon>
-          <v-icon>mdi-message-text</v-icon>
+          <v-icon>mdi-eye</v-icon>
         </v-list-item-icon>
       </v-list-item>
 
-      <v-divider inset></v-divider>
+      <v-list-item
+        :href="`${user.html_url}`"
+        target="_blank"
+      >
+        <v-list-item-action>
+          <v-icon color="black">mdi-github-circle</v-icon>
+        </v-list-item-action>
 
-      <v-list-item @click="">
+        <v-list-item-content>
+          <v-list-item-title>{{user.html_url}}</v-list-item-title>
+          <v-list-item-subtitle>GitHUb</v-list-item-subtitle>
+        </v-list-item-content>
+
         <v-list-item-icon>
-          <v-icon color="indigo">mdi-email</v-icon>
+          <v-icon>mdi-eye</v-icon>
         </v-list-item-icon>
-
-        <v-list-item-content>
-          <v-list-item-title>aliconnors@example.com</v-list-item-title>
-          <v-list-item-subtitle>Personal</v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-list-item @click="">
-        <v-list-item-action></v-list-item-action>
-
-        <v-list-item-content>
-          <v-list-item-title>ali_connors@example.com</v-list-item-title>
-          <v-list-item-subtitle>Work</v-list-item-subtitle>
-        </v-list-item-content>
       </v-list-item>
 
       <v-divider inset></v-divider>
 
-      <v-list-item @click="">
+      <v-list-item >
         <v-list-item-icon>
-          <v-icon color="indigo">mdi-map-marker</v-icon>
+          <v-icon color="black">mdi-email</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>1400 Main Street</v-list-item-title>
-          <v-list-item-subtitle>Orlando, FL 79938</v-list-item-subtitle>
+          <v-list-item-title>{{user.email}}</v-list-item-title>
+          <v-list-item-subtitle>Email</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider inset></v-divider>
+
+      <v-list-item >
+        <v-list-item-icon>
+          <v-icon color="black">mdi-map-marker</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>{{user.location}}</v-list-item-title>
+          <v-list-item-subtitle>Location</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item >
+        <v-list-item-icon>
+          <v-icon color="black">mdi-folder-information</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>Repostories</v-list-item-title>
+          <v-list-item-subtitle>Repos</v-list-item-subtitle>
+          <Repositories :repos="repos"></Repositories>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -101,18 +101,34 @@
 </template>
 <script>
 import userApi from './../service/users';
-
+import Repositories from './Repositories';
 export default {
+    components:{
+     Repositories,
+    },
     data: () =>({
-          name:'lucasmaciel1996',
-          user:[],
+          name:'',
+          user:'',
+          repos:[],
     }),
     mounted(){
+      this.name =this.$route.params.username;
       this.getUserByName();
     },
     methods:{
       getUserByName(){
-         userApi.getUserByName(this.name).then(response =>this.user =response.data);
+        userApi.getUserByName(this.name).then(response => {
+          this.user = response.data;
+          this.getRepos();
+        });
+      },
+      getRepos(){
+        userApi.getRepos(this.name).then(response => {
+          response.data.map(item =>{
+            this.repos.push(item);
+            this.repos.push({divider:true});
+          })
+        });
       }
     }  
 }
