@@ -1,5 +1,5 @@
 <template>
-  <v-app f>
+  <v-app fluid>
     <Header/>
     <v-content >
       <NavigationPath />
