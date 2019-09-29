@@ -2,7 +2,8 @@
   <v-card
     class="pa-1 ma-2"
   >
-    <v-list three-line>
+    <v-list three-line
+    pagination.sync="4">
       <template v-for="(item, index) in users">
         <v-divider
           v-if="item.divider"
@@ -12,7 +13,6 @@
         <v-list-item
           v-else
           :key="item.login"
-          @click=""
         >
           <v-list-item-avatar>
             <v-img :src="item.avatar_url"></v-img>

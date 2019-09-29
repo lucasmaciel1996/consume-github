@@ -11,7 +11,10 @@
       <span>User</span>
       <v-icon>mdi-account-search</v-icon>
     </v-btn>
-
+    <v-btn value="userdetails" to="/userdetails">
+      <span>User Details</span>
+      <v-icon>mdi-account-search</v-icon>
+    </v-btn>
     <v-btn value="projects" to="/projects">
       <span>Projects</span>
       <v-icon>mdi-briefcase</v-icon>
