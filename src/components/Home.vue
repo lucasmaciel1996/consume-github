@@ -37,7 +37,7 @@
       <v-list-item-icon>
         <v-icon>mdi-cloud-download</v-icon>
       </v-list-item-icon>
-      <v-list-item-subtitle>{{climaInfo.current.humidity}}%</v-list-item-subtitle>
+      <v-list-item-subtitle>{{climaInfo.current.humidity}}% </v-list-item-subtitle>
     </v-list-item>
 
     <v-slider
