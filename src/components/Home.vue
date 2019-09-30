@@ -2,18 +2,19 @@
   <v-card
     class="ma-2"
     color="#F9F9F9"
+    v-if="terminado"
   >
     <v-list-item two-line>
       <v-list-item-content>
-        <v-list-item-title class="headline">San Francisco</v-list-item-title>
-        <v-list-item-subtitle>Mon, 12:30 PM, Mostly sunny</v-list-item-subtitle>
+        <v-list-item-title class="headline">{{climaInfo.name +' '+ climaInfo.state +' '+ climaInfo.country}}</v-list-item-title>
+        <v-list-item-subtitle>{{climaInfo.data.date}}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
     <v-card-text>
       <v-row align="center">
         <v-col class="display-3" cols="6">
-          23&deg;C
+          {{climaInfo.data.temperature}}&deg;C
         </v-col>
         <v-col cols="6">
           <v-img
@@ -29,14 +30,14 @@
       <v-list-item-icon>
         <v-icon>mdi-send</v-icon>
       </v-list-item-icon>
-      <v-list-item-subtitle>23 km/h</v-list-item-subtitle>
+      <v-list-item-subtitle>{{climaInfo.data.wind_velocity}} km/h</v-list-item-subtitle>
     </v-list-item>
 
     <v-list-item>
       <v-list-item-icon>
         <v-icon>mdi-cloud-download</v-icon>
       </v-list-item-icon>
-      <v-list-item-subtitle>48%</v-list-item-subtitle>
+      <v-list-item-subtitle>{{climaInfo.data.humidity}}%</v-list-item-subtitle>
     </v-list-item>
 
     <v-slider
@@ -44,45 +45,37 @@
       :max="6"
       :tick-labels="labels"
       class="mx-4"
+      color="black"
       ticks
     ></v-slider>
-
-    <v-list class="transparent">
-      <v-list-item
-        v-for="item in forecast"
-        :key="item.day"
-      >
-        <v-list-item-title>{{ item.day }}</v-list-item-title>
-
-        <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
-
-        <v-list-item-subtitle class="text-right">
-          {{ item.temp }}
-        </v-list-item-subtitle>
-      </v-list-item>
-    </v-list>
 
     <v-divider></v-divider>
 
     <v-card-actions>
-      <v-btn text>Full Report</v-btn>
+      <p class="display-0">Local: <strong>{{climaInfo.name }} </strong> </p>
     </v-card-actions>
   </v-card>
 </template>
 <script>
+  import axios from 'axios';
+  import {configAPi} from './../service/configApiClima';
   export default {
     data () {
       return {
         labels: ['SU', 'MO', 'TU', 'WED', 'TH', 'FR', 'SA'],
-        time: 0,
-        forecast: [
-          { day: 'Tuesday', icon: 'mdi-white-balance-sunny', temp: '24\xB0/12\xB0' },
-          { day: 'Wednesday', icon: 'mdi-white-balance-sunny', temp: '22\xB0/14\xB0' },
-          { day: 'Thursday', icon: 'mdi-cloud', temp: '25\xB0/15\xB0' },
-        ],
+        time:new Date().getDay(),
+        climaInfo:'',
+        terminado:false
       }
     },
+    mounted(){
+      this.getLocaltion();
+    },
+    methods:{
+      getLocaltion(){
+        axios.get(`http://apiadvisor.climatempo.com.br/api/v1/weather/locale/${configAPi.idCity}/current?token=${configAPi.token}`)
+        .then(response =>{ this.climaInfo = response.data; this.terminado=true;})
+      },
+    }
   }
 </script>
