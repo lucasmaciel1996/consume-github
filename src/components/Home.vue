@@ -6,19 +6,19 @@
   >
     <v-list-item two-line>
       <v-list-item-content>
-        <v-list-item-title class="headline">{{climaInfo.location.name + ' '+ climaInfo.location.country}}</v-list-item-title>
-        <v-list-item-subtitle>{{climaInfo.location.localtime}}</v-list-item-subtitle>
+        <v-list-item-title class="headline">{{climaInfo.results.city}}</v-list-item-title>
+        <v-list-item-subtitle>{{climaInfo.results.date + ' '+climaInfo.results.time}}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
     <v-card-text>
       <v-row align="center">
         <v-col class="display-3" cols="6">
-          {{climaInfo.current.temperature}}&deg;C
+          {{climaInfo.results.temp}}&deg;C
         </v-col>
         <v-col cols="6">
           <v-img
-            :src="climaInfo.current.weather_icons[0]"
+            src=""
             alt="Clima Icon"
             width="92"
           ></v-img>
@@ -30,14 +30,14 @@
       <v-list-item-icon>
         <v-icon>mdi-send</v-icon>
       </v-list-item-icon>
-      <v-list-item-subtitle>{{climaInfo.current.wind_speed}} km/h</v-list-item-subtitle>
+      <v-list-item-subtitle>{{climaInfo.results.wind_speedy}}</v-list-item-subtitle>
     </v-list-item>
 
     <v-list-item>
       <v-list-item-icon>
         <v-icon>mdi-cloud-download</v-icon>
       </v-list-item-icon>
-      <v-list-item-subtitle>{{climaInfo.current.humidity}}% </v-list-item-subtitle>
+      <v-list-item-subtitle>{{climaInfo.results.humidity}}% </v-list-item-subtitle>
     </v-list-item>
 
     <v-slider
@@ -52,7 +52,7 @@
     <v-divider></v-divider>
 
     <v-card-actions>
-      <p class="display-0">Local: <strong>{{climaInfo.location.country +' '+ climaInfo.location.name + ' ' +climaInfo.location.region }} </strong> </p>
+      <p class="display-0">Local: <strong>{{climaInfo.results.city_name }} </strong> </p>
     </v-card-actions>
   </v-card>
 </template>
@@ -79,8 +79,8 @@
         });
       },
       GetClima(token,coordinates){
-        axios.get(`http://api.weatherstack.com/current?access_key=${token}&query=${coordinates.lat},${coordinates.lng}`)
-        .then(response =>{ 
+        axios.get(`https://api.hgbrasil.com/weather?format=json-cors&key=${token}&lat=${coordinates.lat}&log${coordinates.lng}&user_ip=remote`)
+       .then(response =>{ 
           this.climaInfo = response.data;
           this.terminado = true;
         });
